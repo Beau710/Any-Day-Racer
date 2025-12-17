@@ -1,0 +1,28 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-color: grey;
+  overflow-x: hidden;
+}
+.leaderboard {
+  max-width: 55em;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  padding: 1em;
+  padding-top: 2em;
+}
+.description {
+  display: inline-block;
+  text-align: center;
+  margin: 1em;
+  color: white;
+  transform: translateY(-5em);
+}
+.search {
+  border-radius: 5px;
+  border: none;
+  background-color: transparent;
+  border-bottom: turquoise 2px solid;
+  padding: 0.5em;
+}
