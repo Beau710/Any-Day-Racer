@@ -1,0 +1,106 @@
+/* Global */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-color: #121212; /* dark but warmer than black */
+  overflow-x: hidden;
+  color: #e0e0e0; /* softer white */
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  text-align: center;
+  padding: 2em 1em;
+  background: linear-gradient(
+    135deg,
+    #1c1c1c,
+    #2a2a2a
+  ); /* subtle earthy gradient */
+}
+
+.hero-content {
+  display: inline-block;
+  transform: translateY(-2em);
+}
+
+.hero-content h1 {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+  color: #d9cab3; /* soft beige/golden tone */
+}
+
+.hero-content p {
+  font-size: 1.2em;
+  margin-bottom: 1em;
+  color: #b0b0a0; /* muted grey-green */
+}
+
+/* Strava Login Button using search style */
+.btn.search {
+  border-radius: 5px;
+  border: none;
+  background-color: transparent;
+  border-bottom: #7fc8a9 2px solid; /* muted turquoise/green */
+  padding: 0.5em 1em;
+  font-size: 1em;
+  color: #e0e0e0;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  transition: transform 0.2s ease-in-out, border-color 0.2s;
+}
+
+.btn.search:hover {
+  transform: scale(1.05);
+  border-bottom-color: #a6e3d0; /* slightly lighter turquoise on hover */
+}
+
+/* Stats Cards: Two per row, scroll down for next row */
+.stats-cards {
+  max-width: 55em;
+  margin: -3em auto 2em auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* TWO cards per row */
+  gap: 2em;
+  padding: 0 1em;
+}
+
+.card {
+  background-color: #1f1f1f; /* dark earthy card background */
+  border-radius: 10px;
+  padding: 2em;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* soft shadow */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+  min-height: 200px; /* bigger cards */
+}
+
+.card:hover {
+  transform: scale(1.025);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+}
+
+.card h3 {
+  margin-bottom: 0.5em;
+  color: #d9cab3; /* soft beige/golden tone */
+}
+
+.card p {
+  font-size: 2em;
+  color: #7fc8a9; /* muted turquoise accent for numbers */
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 860px) {
+  .stats-cards {
+    grid-template-columns: 1fr; /* single card per row on mobile */
+    padding: 0;
+  }
+  .hero-content {
+    transform: translateY(0);
+  }
+}
