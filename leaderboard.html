@@ -21,17 +21,17 @@
           <tbody>
             <tr>
               <td id="gold">1</td>
-              <td id="gold">Player 1</td>
+              <td id="gold"><p>Player 1</p></td>
               <td id="gold">2:56</td>
             </tr>
             <tr>
               <td id="silver">2</td>
-              <td id="silver">Player 2</td>
+              <td id="silver"><p>Player 2</p></td>
               <td>3:10</td>
             </tr>
             <tr>
               <td id="bronze">3</td>
-              <td id="bronze">Player 3</td>
+              <td id="bronze"><p>Player 3</p></td>
               <td id="bronze">3:15</td>
             </tr>
           </tbody>
@@ -39,4 +39,17 @@
       </div>
     </div>
   </body>
+  <script>
+    function search(){
+      var text = document.getElementById("search").value
+      const trs = document.getElementsByTagName("tr");
+      for (let i=i;i<tr.length;i++){
+        if(!tr[i].children[1].innerHTML.toLowerCase().includes(text.toLowerCase())){}
+        tr[i].style.display="none";
+        else{       
+          tr[i].style.display="";
+        }
+      }
+    }
+  </script>
 </html>
