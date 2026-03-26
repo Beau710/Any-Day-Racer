@@ -1,37 +1,132 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Any Day Racer</title>
     <link rel="stylesheet" href="index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <header class="hero">
-      <div class="hero-content description">
-        <h1>Any Day Racer</h1>
-        <p>Race the trails your way, any day.</p>
-        <a href="#" class="btn search">Login with Strava</a>
+    <nav class="nav">
+      <div class="nav-logo">Any Day Racer</div>
+      <div class="nav-links">
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="#">Trails</a>
+        <a href="#">Archive</a>
+        <a href="profile.html" class="nav-cta">Connect with Strava</a>
       </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">Monthly Races</p>
+        <h1 class="hero-title">
+          Race the trails<br />your way<br /><span class="accent"
+            >any day.</span
+          >
+        </h1>
+        <p class="hero-sub">
+          Pick a segment. Ride it on your terms. Beat your mates.
+        </p>
+        <a href="profile.html" class="btn-primary">Connect with Strava</a>
+      </div>
+      <div class="hero-scroll">scroll</div>
     </header>
 
-    <section class="stats-cards leaderboard">
-      <div class="card">
-        <h3>Monthly Rides</h3>
-        <p>12</p>
-      </div>
-      <div class="card">
-        <h3>Best Segment</h3>
-        <p>5:12</p>
-      </div>
-      <div class="card">
-        <h3>Total Distance</h3>
-        <p>432 km</p>
-      </div>
-      <div class="card">
-        <h3>Avg Speed</h3>
-        <p>28 km/h</p>
+    <section class="how">
+      <div class="how-inner">
+        <p class="section-label">How it works</p>
+        <div class="steps">
+          <div class="step">
+            <span class="step-num">01</span>
+            <h3>Connect</h3>
+            <p>
+              Sign in with your Strava account. Your rides sync automatically.
+            </p>
+          </div>
+          <div class="step">
+            <span class="step-num">02</span>
+            <h3>Ride</h3>
+            <p>
+              A new trail segment is picked every month. Hit it as many times as
+              you like — only your best time counts.
+            </p>
+          </div>
+          <div class="step">
+            <span class="step-num">03</span>
+            <h3>Compete</h3>
+            <p>
+              Your best effort lands on the leaderboard. See where you stack up
+              against your crew and everyone else.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
+
+    <section class="this-month">
+      <div class="month-inner">
+        <p class="section-label">This month's trail</p>
+        <div class="trail-card">
+          <div class="trail-info">
+            <h2 class="trail-name">1700</h2>
+            <p class="trail-location">Local Trails</p>
+            <div class="trail-meta">
+              <div class="meta-item">
+                <span class="meta-label">Type</span>
+                <span class="meta-val">Enduro / Gravity</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Est. time</span>
+                <span class="meta-val">2:30 — 4:00</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Ends</span>
+                <span class="meta-val" id="days-left"></span>
+              </div>
+            </div>
+          </div>
+          <a href="leaderboard.html" class="btn-outline">View Leaderboard →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="vibe">
+      <div class="vibe-inner">
+        <h2>
+          Built for everyday riders.<br /><span class="accent"
+            >Fuelled by competition.</span
+          >
+        </h2>
+        <p>
+          No race plates. No entry fees. No pressure. Just you, the trail, and a
+          timer. Any Day Racer turns your regular rides into something to chase
+          — a friendly rivalry with your mates, a personal record to hunt, or
+          just a reason to session your favourite descent one more time.
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p class="footer-logo">Any Day Racer</p>
+      <p class="footer-sub">Race the trails your way any day.</p>
+      <p class="footer-copy">© 2026 Any Day Racer</p>
+    </footer>
+
+    <script>
+      const end = new Date(
+        new Date().getFullYear(),
+        new Date().getMonth() + 1,
+        1,
+      );
+      const now = new Date();
+      const days = Math.ceil((end - now) / (1000 * 60 * 60 * 24));
+      document.getElementById("days-left").textContent = days + " days left";
+    </script>
   </body>
 </html>

@@ -1,11 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Leaderboard</title>
+    <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="leaderboard.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">Any Day Racer</a>
+      <div class="nav-links">
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="#">Trails</a>
+        <a href="#">Archive</a>
+        <a href="profile.html" class="nav-strava">My Profile</a>
+      </div>
+    </nav>
     <div class="leaderboard">
       <div class="description">
         <h2>1700 Monthly Leaderboard</h2>
@@ -40,14 +54,18 @@
     </div>
   </body>
   <script>
-    function search(){
-      var text = document.getElementById("search").value
+    function search() {
+      var text = document.getElementById("search").value;
       const trs = document.getElementsByTagName("tr");
-      for (let i=i;i<tr.length;i++){
-        if(!tr[i].children[1].innerHTML.toLowerCase().includes(text.toLowerCase())){}
-        tr[i].style.display="none";
-        else{       
-          tr[i].style.display="";
+      for (let i = 1; i < trs.length; i++) {
+        if (
+          !trs[i].children[1].innerHTML
+            .toLowerCase()
+            .includes(text.toLowerCase())
+        ) {
+          trs[i].style.display = "none";
+        } else {
+          trs[i].style.display = "";
         }
       }
     }
