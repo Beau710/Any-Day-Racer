@@ -1,0 +1,99 @@
+.signup-wrap {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 8rem 2rem 4rem;
+  animation: fadeUp 0.7s ease both;
+}
+
+.signup-heading {
+  margin-bottom: 2.5rem;
+}
+
+.signup-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+
+.signup-sub {
+  font-size: 0.9rem;
+  color: var(--grey-text);
+  line-height: 1.6;
+}
+
+/* CARD */
+.signup-card {
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* STRAVA BADGE */
+.strava-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(252, 76, 2, 0.1);
+  border: 1px solid rgba(252, 76, 2, 0.3);
+  border-radius: 4px;
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem;
+  color: #fc4c02;
+  letter-spacing: 0.05em;
+}
+
+/* FORM */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--grey-text);
+}
+
+.form-group input {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  color: var(--white);
+  transition: border-color 0.2s;
+}
+
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: turquoise;
+}
+
+.signup-btn {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 860px) {
+  .signup-wrap {
+    padding: 6rem 1.5rem 3rem;
+  }
+}

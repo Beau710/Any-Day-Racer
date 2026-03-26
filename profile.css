@@ -87,10 +87,6 @@
   color: var(--white);
 }
 
-.detail-val.accent {
-  color: var(--turquoise);
-}
-
 /* STATS GRID */
 .stats-grid {
   display: grid;

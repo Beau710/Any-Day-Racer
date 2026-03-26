@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Leaderboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leaderboard — Any Day Racer</title>
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="leaderboard.css" />
     <link
@@ -12,62 +13,84 @@
   </head>
   <body>
     <nav class="nav">
-      <a href="index.html" class="nav-logo">Any Day Racer</a>
+      <a href="index.html" class="nav-logo"
+        >Any Day <span class="logo-accent">Racer</span></a
+      >
       <div class="nav-links">
         <a href="leaderboard.html">Leaderboard</a>
         <a href="#">Trails</a>
         <a href="#">Archive</a>
-        <a href="profile.html" class="nav-strava">My Profile</a>
+        <a href="profile.html" id="nav-btn" class="nav-strava">My Profile</a>
       </div>
     </nav>
-    <div class="leaderboard">
-      <div class="description">
-        <h2>1700 Monthly Leaderboard</h2>
-        <input class="search" placeholder="search" id="search" />
-        <table>
+
+    <main class="lb-wrap">
+      <div class="lb-heading">
+        <p class="section-label">March 2026</p>
+        <h1 class="lb-title">1700</h1>
+        <p class="lb-sub">Local Trails &mdash; Enduro / Gravity</p>
+      </div>
+
+      <div class="lb-controls">
+        <input class="search" placeholder="Search racer..." id="search" />
+      </div>
+
+      <div class="lb-table-wrap">
+        <table class="lb-table">
           <thead>
             <tr>
-              <td>Rank</td>
-              <td>Racer</td>
-              <td>Time</td>
+              <th>Rank</th>
+              <th>Racer</th>
+              <th>Time</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td id="gold">1</td>
-              <td id="gold"><p>Player 1</p></td>
-              <td id="gold">2:56</td>
+              <td class="gold">1</td>
+              <td class="gold">Player 1</td>
+              <td class="gold">2:56</td>
             </tr>
             <tr>
-              <td id="silver">2</td>
-              <td id="silver"><p>Player 2</p></td>
-              <td>3:10</td>
+              <td class="silver">2</td>
+              <td class="silver">Player 2</td>
+              <td class="silver">3:10</td>
             </tr>
             <tr>
-              <td id="bronze">3</td>
-              <td id="bronze"><p>Player 3</p></td>
-              <td id="bronze">3:15</td>
+              <td class="bronze">3</td>
+              <td class="bronze">Player 3</td>
+              <td class="bronze">3:15</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Player 4</td>
+              <td>3:22</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Player 5</td>
+              <td>3:30</td>
             </tr>
           </tbody>
         </table>
       </div>
-    </div>
+    </main>
+
+    <footer class="footer">
+      <p class="footer-logo">Any Day Racer</p>
+      <p class="footer-sub">Race the trails your way any day.</p>
+      <p class="footer-copy">&copy; 2026 Any Day Racer</p>
+    </footer>
+
+    <script>
+      document.getElementById("search").addEventListener("input", function () {
+        var text = this.value.toLowerCase();
+        const rows = document.querySelectorAll(".lb-table tbody tr");
+        rows.forEach(function (row) {
+          const name = row.cells[1].textContent.toLowerCase();
+          row.style.display = name.includes(text) ? "" : "none";
+        });
+      });
+    </script>
+    <script src="index.js"></script>
   </body>
-  <script>
-    function search() {
-      var text = document.getElementById("search").value;
-      const trs = document.getElementsByTagName("tr");
-      for (let i = 1; i < trs.length; i++) {
-        if (
-          !trs[i].children[1].innerHTML
-            .toLowerCase()
-            .includes(text.toLowerCase())
-        ) {
-          trs[i].style.display = "none";
-        } else {
-          trs[i].style.display = "";
-        }
-      }
-    }
-  </script>
 </html>

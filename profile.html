@@ -13,22 +13,24 @@
   </head>
   <body>
     <nav class="nav">
-      <a href="index.html" class="nav-logo">Any Day Racer</a>
+      <a href="index.html" class="nav-logo"
+        >Any Day <span class="logo-accent">Racer</span></a
+      >
       <div class="nav-links">
         <a href="leaderboard.html">Leaderboard</a>
         <a href="#">Trails</a>
         <a href="#">Archive</a>
-        <a href="profile.html" class="nav-cta">My Profile</a>
+        <a href="profile.html">My Profile</a>
       </div>
     </nav>
 
     <main class="profile-wrap">
       <!-- PROFILE HEADER -->
       <div class="profile-header">
-        <div class="avatar">BR</div>
+        <div class="avatar" id="avatar">BR</div>
         <div class="profile-identity">
           <p class="profile-eyebrow">Any Day Racer</p>
-          <h1 class="profile-name">Beau Rider</h1>
+          <h1 class="profile-name" id="profile-name">Beau Rider</h1>
           <p class="profile-strava">Connected via Strava</p>
         </div>
       </div>
@@ -37,15 +39,17 @@
       <div class="rider-details">
         <div class="detail-item">
           <span class="detail-label">Home Park</span>
-          <span class="detail-val">Woodhill Bike Park</span>
+          <span class="detail-val" id="detail-homepark"
+            >Woodhill Bike Park</span
+          >
         </div>
         <div class="detail-item">
           <span class="detail-label">Bike</span>
-          <span class="detail-val">Trek Slash 9</span>
+          <span class="detail-val" id="detail-bike">Trek Slash 9</span>
         </div>
         <div class="detail-item">
           <span class="detail-label">Favourite Trail</span>
-          <span class="detail-val accent">1700</span>
+          <span class="detail-val" id="detail-trail">1700</span>
         </div>
       </div>
 
@@ -141,5 +145,6 @@
       <p class="footer-sub">Race the trails your way any day.</p>
       <p class="footer-copy">© 2026 Any Day Racer</p>
     </footer>
+    <script src="profile.js"></script>
   </body>
 </html>

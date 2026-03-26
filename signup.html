@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Profile — Any Day Racer</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="signup.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="nav">
+      <a href="index.html" class="nav-logo"
+        >Any Day <span class="logo-accent">Racer</span></a
+      >
+      <div class="nav-links">
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="#">Trails</a>
+        <a href="#">Archive</a>
+        <a href="signup.html" class="nav-strava">Connect with Strava</a>
+      </div>
+    </nav>
+
+    <main class="signup-wrap">
+      <div class="signup-heading">
+        <p class="section-label">Get started</p>
+        <h1 class="signup-title">Create your profile</h1>
+        <p class="signup-sub">
+          Tell us a bit about yourself. You can update these any time.
+        </p>
+      </div>
+
+      <div class="signup-card">
+        <div class="strava-badge">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="#fc4c02"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066l-2.084 4.116z"
+            />
+            <path
+              d="M11.374 10.172L9.286 6.056 7.198 10.172H4l5.286 10.456 2.088-4.112-2.167-4.28h2.167v-2.064z"
+              opacity=".6"
+            />
+          </svg>
+          <span>Signing up via Strava</span>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Full name</label>
+          <input type="text" id="name" placeholder="e.g. Beau Rider" />
+        </div>
+
+        <div class="form-group">
+          <label for="homepark">Home park</label>
+          <input
+            type="text"
+            id="homepark"
+            placeholder="e.g. Woodhill Bike Park"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="bike">Bike</label>
+          <input type="text" id="bike" placeholder="e.g. Trek Slash 9" />
+        </div>
+
+        <div class="form-group">
+          <label for="trail">Favourite trail</label>
+          <input type="text" id="trail" placeholder="e.g. 1700" />
+        </div>
+
+        <button class="btn-strava signup-btn" onclick="createProfile()">
+          Create Profile
+        </button>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p class="footer-logo">Any Day <span class="logo-accent">Racer</span></p>
+      <p class="footer-sub">Race the trails your way any day.</p>
+      <p class="footer-copy">&copy; 2026 Any Day Racer</p>
+    </footer>
+
+    <script>
+      function createProfile() {
+        const name = document.getElementById("name").value.trim();
+        const homepark = document.getElementById("homepark").value.trim();
+        const bike = document.getElementById("bike").value.trim();
+        const trail = document.getElementById("trail").value.trim();
+
+        if (!name || !homepark || !bike || !trail) {
+          alert("Please fill in all fields before continuing.");
+          return;
+        }
+
+        const profile = { name, homepark, bike, trail };
+        localStorage.setItem("adr_profile", JSON.stringify(profile));
+
+        window.location.href = "profile.html";
+      }
+    </script>
+  </body>
+</html>
