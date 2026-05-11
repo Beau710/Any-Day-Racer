@@ -21,7 +21,7 @@ async function loadLeaderboard() {
   const tbody = document.querySelector(".lb-table tbody");
   tbody.innerHTML = "";
 
-  data.entries.forEach(function (entry, index) {
+  data.forEach(function (entry, index) {
     const rank = index + 1;
     const minutes = Math.floor(entry.elapsed_time / 60);
     const seconds = String(entry.elapsed_time % 60).padStart(2, "0");
