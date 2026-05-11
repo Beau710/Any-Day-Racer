@@ -35,7 +35,7 @@ async function loadLeaderboard() {
     const row = `
       <tr>
         <td class="${rankClass}">${rank}</td>
-        <td class="${rankClass}">${entry.athlete_name}</td>
+        <td class="${rankClass}">${entry.athlete.firstname} ${entry.athlete.lastname}</td>
         <td class="${rankClass}">${time}</td>
       </tr>
     `;
