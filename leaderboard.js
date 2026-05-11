@@ -22,7 +22,6 @@ async function loadLeaderboard() {
   tbody.innerHTML = "";
 
   data.forEach(function (entry, index) {
-    console.log(entry);
     const rank = index + 1;
     const minutes = Math.floor(entry.elapsed_time / 60);
     const seconds = String(entry.elapsed_time % 60).padStart(2, "0");
@@ -36,7 +35,7 @@ async function loadLeaderboard() {
     const row = `
       <tr>
         <td class="${rankClass}">${rank}</td>
-        <td class="${rankClass}">${entry.athlete.firstname} ${entry.athlete.lastname}</td>
+        <td class="${rankClass}">${profile ? profile.name : "Unknown"}</td>
         <td class="${rankClass}">${time}</td>
       </tr>
     `;
