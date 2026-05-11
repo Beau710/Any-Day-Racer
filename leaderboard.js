@@ -13,7 +13,7 @@ async function loadLeaderboard() {
 
   const data = await response.json();
 
-  if (!data.entries || data.entries.length === 0) {
+  if (!data || data.length === 0) {
     console.log("No entries found", JSON.stringify(data));
     return;
   }

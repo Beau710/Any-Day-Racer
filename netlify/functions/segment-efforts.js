@@ -10,7 +10,7 @@ exports.handler = async function (event) {
   }
 
   const response = await fetch(
-    `https://www.strava.com/api/v3/segments/${segmentId}/leaderboard`,
+    `https://www.strava.com/api/v3/segment_efforts?segment_id=${segmentId}&per_page=10`,
     {
       headers: {
         Authorization: `Bearer ${accessToken}`,
