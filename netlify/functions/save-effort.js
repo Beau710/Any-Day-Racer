@@ -28,7 +28,14 @@ exports.handler = async function (event) {
       body: JSON.stringify({ error: "Failed to save effort" }),
     };
   }
-
+  if (!response.ok) {
+    const error = await response.text();
+    console.log("Supabase error:", error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: "Failed to save effort", details: error }),
+    };
+  }
   return {
     statusCode: 200,
     body: JSON.stringify({ success: true }),
