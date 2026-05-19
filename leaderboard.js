@@ -1,20 +1,39 @@
 const profile = JSON.parse(localStorage.getItem("adr_profile"));
 const accessToken = profile ? profile.access_token : null;
 
-async function loadLeaderboard() {
-  if (!accessToken) {
-    console.log("No access token found");
-    return;
-  }
+async function saveEfforts() {
+  if (!accessToken) return;
 
   const response = await fetch(
     `/.netlify/functions/segment-efforts?access_token=${accessToken}`,
   );
+  const efforts = await response.json();
 
+  if (!efforts || efforts.length === 0) return;
+
+  const bestEffort = efforts.reduce(function (best, current) {
+    return current.elapsed_time < best.elapsed_time ? current : best;
+  });
+
+  await fetch("/.netlify/functions/save-effort", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      athlete_id: profile.athlete_id,
+      athlete_name: profile.name,
+      segment_id: 3818489,
+      elapsed_time: bestEffort.elapsed_time,
+      start_date: bestEffort.start_date,
+    }),
+  });
+}
+
+async function loadLeaderboard() {
+  const response = await fetch("/.netlify/functions/get-leaderboard");
   const data = await response.json();
 
   if (!data || data.length === 0) {
-    console.log("No entries found", JSON.stringify(data));
+    console.log("No entries found");
     return;
   }
 
@@ -35,7 +54,7 @@ async function loadLeaderboard() {
     const row = `
       <tr>
         <td class="${rankClass}">${rank}</td>
-        <td class="${rankClass}">${profile ? profile.name : "Unknown"}</td>
+        <td class="${rankClass}">${entry.athlete_name}</td>
         <td class="${rankClass}">${time}</td>
       </tr>
     `;
@@ -43,4 +62,9 @@ async function loadLeaderboard() {
   });
 }
 
-loadLeaderboard();
+async function init() {
+  await saveEfforts();
+  await loadLeaderboard();
+}
+
+init();
