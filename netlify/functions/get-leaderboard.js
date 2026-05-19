@@ -1,8 +1,6 @@
 exports.handler = async function () {
   const url = `${process.env.SUPABASE_URL}/rest/v1/leaderboard?segment_id=eq.3818489&order=elapsed_time.asc`;
 
-  console.log("Fetching URL:", url);
-
   const response = await fetch(url, {
     headers: {
       apikey: process.env.SUPABASE_ANON_KEY,

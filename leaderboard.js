@@ -31,7 +31,6 @@ async function saveEfforts() {
 async function loadLeaderboard() {
   const response = await fetch("/.netlify/functions/get-leaderboard");
   const data = await response.json();
-  console.log("Leaderboard data:", JSON.stringify(data));
 
   if (!data || data.length === 0) {
     console.log("No entries found");
