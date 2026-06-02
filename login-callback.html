@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logging in… — Any Day Racer</title>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .callback-wrap {
+        min-height: 60vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        font-family: var(--font-body);
+        color: var(--grey-text);
+      }
+      .callback-wrap p {
+        font-size: 1rem;
+        letter-spacing: 0.05em;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <a href="index.html" class="nav-logo"
+        >Any Day <span class="logo-accent">Racer</span></a
+      >
+    </nav>
+
+    <main class="callback-wrap">
+      <p id="status">Logging you in…</p>
+    </main>
+
+    <script>
+      async function handleLogin() {
+        const params = new URLSearchParams(window.location.search);
+        const accessToken = params.get("access_token");
+        const athleteId = params.get("athlete_id");
+
+        if (!accessToken || !athleteId) {
+          document.getElementById("status").textContent =
+            "Login failed. Redirecting…";
+          setTimeout(() => {
+            window.location.href = "login.html";
+          }, 2000);
+          return;
+        }
+
+        const response = await fetch(
+          `/.netlify/functions/get-profile?athlete_id=${athleteId}`,
+        );
+
+        if (response.status === 404) {
+          document.getElementById("status").textContent =
+            "No account found. Redirecting to sign up…";
+          setTimeout(() => {
+            window.location.href = "signup.html";
+          }, 2000);
+          return;
+        }
+
+        if (!response.ok) {
+          document.getElementById("status").textContent =
+            "Something went wrong. Please try again.";
+          return;
+        }
+
+        const profile = await response.json();
+        profile.access_token = accessToken;
+        profile.athlete_id = athleteId;
+        localStorage.setItem("adr_profile", JSON.stringify(profile));
+
+        window.location.href = "profile.html";
+      }
+
+      handleLogin();
+    </script>
+  </body>
+</html>

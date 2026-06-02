@@ -29,6 +29,9 @@ async function saveEfforts() {
 }
 
 async function loadLeaderboard() {
+  const tbody = document.querySelector(".lb-table tbody");
+  tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; color: var(--grey-text); padding: 2rem; font-family: var(--font-body); letter-spacing: 0.05em;">Loading times...</td></tr>`;
+  await new Promise((resolve) => setTimeout(resolve, 800));
   const response = await fetch("/.netlify/functions/get-leaderboard");
   const data = await response.json();
 
@@ -36,7 +39,6 @@ async function loadLeaderboard() {
     return;
   }
 
-  const tbody = document.querySelector(".lb-table tbody");
   tbody.innerHTML = "";
 
   data.forEach(function (entry, index) {
@@ -62,6 +64,8 @@ async function loadLeaderboard() {
 }
 
 async function init() {
+  loadLeaderboard();
+
   await saveEfforts();
   await loadLeaderboard();
 }

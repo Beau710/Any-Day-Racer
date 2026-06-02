@@ -54,9 +54,11 @@ body {
   color: var(--white);
   text-decoration: none;
 }
+
 .logo-accent {
   color: turquoise;
 }
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -76,10 +78,10 @@ body {
   color: var(--white);
 }
 
-.nav-cta {
+.nav-strava {
   color: #fff !important;
-  background: #fc4c02;
-  border: 1px solid #fc4c02;
+  background: var(--orange);
+  border: 1px solid var(--orange);
   padding: 0.85rem 2rem;
   border-radius: 4px;
   font-weight: 600;
@@ -90,8 +92,26 @@ body {
   transition: opacity 0.2s !important;
 }
 
-.nav-cta:hover {
+.nav-strava:hover {
   opacity: 0.85;
+  color: #fff !important;
+}
+
+.btn-logout {
+  background: transparent;
+  border: none;
+  color: var(--grey-text);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.btn-logout:hover {
+  color: var(--white);
 }
 
 /* HERO */
@@ -160,8 +180,8 @@ body {
 
 .btn-primary {
   display: inline-block;
-  background: var(--orange);
-  color: var(--white);
+  background: var(--turquoise);
+  color: var(--black);
   text-decoration: none;
   font-family: var(--font-body);
   font-weight: 600;
@@ -176,6 +196,30 @@ body {
 }
 
 .btn-primary:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+.btn-strava {
+  display: inline-block;
+  background: var(--orange);
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border-radius: 4px;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-strava:hover {
   opacity: 0.85;
   transform: translateY(-2px);
 }
@@ -403,7 +447,7 @@ body {
     gap: 1rem;
   }
 
-  .nav-links a:not(.nav-cta) {
+  .nav-links a:not(.nav-strava) {
     display: none;
   }
 

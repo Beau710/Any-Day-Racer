@@ -12,12 +12,26 @@
   </head>
   <body>
     <nav class="nav">
-      <div class="nav-logo">Any Day <span class="logo-accent">Racer</span></div>
+      <a href="index.html" class="nav-logo"
+        >Any Day <span class="logo-accent">Racer</span></a
+      >
       <div class="nav-links">
         <a href="leaderboard.html">Leaderboard</a>
         <a href="#">Trails</a>
         <a href="#">Archive</a>
-        <a href="profile.html" class="nav-cta">Connect with Strava</a>
+        <a href="signup.html" id="nav-strava" class="nav-strava">Sign Up</a>
+        <a href="login.html" id="nav-login" style="display: none">Log In</a>
+        <a href="profile.html" id="nav-profile" style="display: none"
+          >My Profile</a
+        >
+        <button
+          class="btn-logout"
+          id="nav-logout"
+          style="display: none"
+          onclick="logout()"
+        >
+          Log Out
+        </button>
       </div>
     </nav>
 
@@ -33,7 +47,10 @@
         <p class="hero-sub">
           We pick a trail. You ride it whenever you want. Fastest lap counts.
         </p>
-        <a href="signup.html" class="btn-primary">Connect with Strava</a>
+
+        <a href="signup.html" id="hero-btn" class="btn-strava"
+          >Connect with Strava</a
+        >
       </div>
       <div class="hero-scroll"></div>
     </header>
@@ -117,15 +134,7 @@
       <p class="footer-copy">© 2026 Any Day Racer</p>
     </footer>
 
-    <script>
-      const end = new Date(
-        new Date().getFullYear(),
-        new Date().getMonth() + 1,
-        1,
-      );
-      const now = new Date();
-      const days = Math.ceil((end - now) / (1000 * 60 * 60 * 24));
-      document.getElementById("days-left").textContent = days + " days left";
-    </script>
+    <script src="index.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>

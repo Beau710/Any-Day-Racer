@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In — Any Day Racer</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="signup.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="nav">
+      <a href="index.html" class="nav-logo"
+        >Any Day <span class="logo-accent">Racer</span></a
+      >
+      <div class="nav-links">
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="#">Trails</a>
+        <a href="#">Archive</a>
+        <a href="login.html" class="nav-strava">Log In</a>
+        <a href="signup.html">Sign Up</a>
+      </div>
+    </nav>
+
+    <main class="signup-wrap">
+      <div class="signup-heading">
+        <p class="section-label">Welcome back</p>
+        <h1 class="signup-title">Log in to your account</h1>
+        <p class="signup-sub">
+          Connect with the same Strava account you used to sign up.
+        </p>
+      </div>
+
+      <div class="signup-card">
+        <div class="strava-badge">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="#fc4c02"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066l-2.084 4.116z"
+            />
+            <path
+              d="M11.374 10.172L9.286 6.056 7.198 10.172H4l5.286 10.456 2.088-4.112-2.167-4.28h2.167v-2.064z"
+              opacity=".6"
+            />
+          </svg>
+          <span>Log in via Strava</span>
+        </div>
+
+        <p
+          style="
+            font-family: var(--font-body);
+            color: var(--grey-text);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+          "
+        >
+          We'll match your Strava account to your existing profile.
+        </p>
+
+        <button id="login-btn" class="btn-strava signup-btn">
+          Log In with Strava
+        </button>
+
+        <p
+          style="
+            font-family: var(--font-body);
+            color: var(--grey-text);
+            font-size: 0.85rem;
+            margin-top: 1.5rem;
+            text-align: center;
+          "
+        >
+          New here?
+          <a href="signup.html" style="color: var(--accent)"
+            >Create a profile</a
+          >
+        </p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p class="footer-logo">Any Day <span class="logo-accent">Racer</span></p>
+      <p class="footer-sub">Race the trails your way any day.</p>
+      <p class="footer-copy">&copy; 2026 Any Day Racer</p>
+    </footer>
+
+    <script src="login.js"></script>
+  </body>
+</html>
