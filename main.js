@@ -3,7 +3,7 @@ function logout() {
   window.location.href = "index.html";
 }
 
-const profile = JSON.parse(localStorage.getItem("adr_profile"));
+const currentUser = JSON.parse(localStorage.getItem("adr_profile"));
 
 const navStrava = document.getElementById("nav-strava");
 const navLogin = document.getElementById("nav-login");
@@ -11,7 +11,7 @@ const navProfile = document.getElementById("nav-profile");
 const navLogout = document.getElementById("nav-logout");
 const heroBtn = document.getElementById("hero-btn");
 
-if (profile) {
+if (currentUser) {
   if (navStrava) navStrava.style.display = "none";
   if (navLogin) navLogin.style.display = "none";
   if (navProfile) navProfile.style.display = "";
