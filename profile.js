@@ -52,14 +52,6 @@ async function init() {
     .slice(0, 2);
   document.getElementById("avatar").textContent = initials;
 
-  const navStrava = document.getElementById("nav-strava");
-  const navLogin = document.getElementById("nav-login");
-  const navProfile = document.getElementById("nav-profile");
-  const navLogout = document.getElementById("nav-logout");
-  if (navStrava) navStrava.style.display = "none";
-  if (navLogin) navLogin.style.display = "none";
-  if (navProfile) navProfile.style.display = "";
-  if (navLogout) navLogout.style.display = "";
 }
 
 function logout() {
