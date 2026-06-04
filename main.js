@@ -5,14 +5,12 @@ function logout() {
 
 const currentUser = JSON.parse(localStorage.getItem("adr_profile"));
 
-const navStrava = document.getElementById("nav-strava");
 const navLogin = document.getElementById("nav-login");
 const navProfile = document.getElementById("nav-profile");
 const navLogout = document.getElementById("nav-logout");
 const heroBtn = document.getElementById("hero-btn");
 
 if (currentUser) {
-  if (navStrava) navStrava.style.display = "none";
   if (navLogin) navLogin.style.display = "none";
   if (navProfile) navProfile.style.display = "";
   if (navLogout) navLogout.style.display = "";
@@ -21,7 +19,6 @@ if (currentUser) {
     heroBtn.href = "profile.html";
   }
 } else {
-  if (navStrava) navStrava.style.display = "";
   if (navLogin) navLogin.style.display = "";
   if (navProfile) navProfile.style.display = "none";
   if (navLogout) navLogout.style.display = "none";

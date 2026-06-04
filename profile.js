@@ -11,6 +11,7 @@ async function init() {
       homepark: tempProfile.homepark,
       bike: tempProfile.bike,
       trail: tempProfile.trail,
+      email: tempProfile.email,
       access_token: accessToken,
       athlete_id: athleteId,
     };
@@ -26,6 +27,7 @@ async function init() {
         homepark: profile.homepark,
         bike: profile.bike,
         trail: profile.trail,
+        email: profile.email,
       }),
     });
   }

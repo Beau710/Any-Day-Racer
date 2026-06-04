@@ -20,7 +20,9 @@
         <a href="leaderboard.html">Leaderboard</a>
         <a href="#">Trails</a>
         <a href="#">Archive</a>
-        <a href="signup.html" class="nav-strava">Connect with Strava</a>
+        <a href="login.html" id="nav-login">Log In</a>
+        <a href="profile.html" id="nav-profile" style="display:none">My Profile</a>
+        <button class="btn-logout" id="nav-logout" style="display:none" onclick="logout()">Log Out</button>
       </div>
     </nav>
 
@@ -34,7 +36,6 @@
       </div>
 
       <div class="signup-card">
-
         <div class="form-group">
           <label for="name">Full name</label>
           <input type="text" id="name" placeholder="e.g. Beau Rider" />
@@ -42,11 +43,7 @@
 
         <div class="form-group">
           <label for="homepark">Home park</label>
-          <input
-            type="text"
-            id="homepark"
-            placeholder="e.g. Woodhill Bike Park"
-          />
+          <input type="text" id="homepark" placeholder="e.g. Woodhill Bike Park" />
         </div>
 
         <div class="form-group">
@@ -59,9 +56,19 @@
           <input type="text" id="trail" placeholder="e.g. 1700" />
         </div>
 
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="e.g. beau@email.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Choose a password" />
+        </div>
+
+        <p id="signup-error" style="display:none; font-family: var(--font-body); color: #e05555; font-size: 0.85rem; margin-bottom: 1rem;"></p>
+
         <button id="strava-btn" class="btn-strava signup-btn">Connect with Strava</button>
-          Create Profile
-        </button>
       </div>
     </main>
 
@@ -71,24 +78,7 @@
       <p class="footer-copy">&copy; 2026 Any Day Racer</p>
     </footer>
 
-    <script>
-      function createProfile() {
-        const name = document.getElementById("name").value.trim();
-        const homepark = document.getElementById("homepark").value.trim();
-        const bike = document.getElementById("bike").value.trim();
-        const trail = document.getElementById("trail").value.trim();
-
-        if (!name || !homepark || !bike || !trail) {
-          alert("Please fill in all fields before continuing.");
-          return;
-        }
-
-        const profile = { name, homepark, bike, trail };
-        localStorage.setItem("adr_profile", JSON.stringify(profile));
-
-        window.location.href = "profile.html";
-      }
-    </script>
     <script src="signup.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>

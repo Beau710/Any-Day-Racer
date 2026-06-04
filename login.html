@@ -20,70 +20,38 @@
         <a href="leaderboard.html">Leaderboard</a>
         <a href="#">Trails</a>
         <a href="#">Archive</a>
-        <a href="login.html" class="nav-strava">Log In</a>
-        <a href="signup.html">Sign Up</a>
+        <a href="login.html" id="nav-login">Log In</a>
+        <a href="profile.html" id="nav-profile" style="display:none">My Profile</a>
+        <button class="btn-logout" id="nav-logout" style="display:none" onclick="logout()">Log Out</button>
       </div>
     </nav>
 
     <main class="signup-wrap">
       <div class="signup-heading">
         <p class="section-label">Welcome back</p>
-        <h1 class="signup-title">Log in to your account</h1>
-        <p class="signup-sub">
-          Connect with the same Strava account you used to sign up.
-        </p>
+        <h1 class="signup-title">Log in</h1>
       </div>
 
       <div class="signup-card">
-        <div class="strava-badge">
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="#fc4c02"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066l-2.084 4.116z"
-            />
-            <path
-              d="M11.374 10.172L9.286 6.056 7.198 10.172H4l5.286 10.456 2.088-4.112-2.167-4.28h2.167v-2.064z"
-              opacity=".6"
-            />
-          </svg>
-          <span>Log in via Strava</span>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="your@email.com" />
         </div>
 
-        <p
-          style="
-            font-family: var(--font-body);
-            color: var(--grey-text);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-          "
-        >
-          We'll match your Strava account to your existing profile.
-        </p>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Your password" />
+        </div>
 
-        <button id="login-btn" class="btn-strava signup-btn">
-          Log In with Strava
-        </button>
+        <p id="login-error" style="display:none; font-family: var(--font-body); color: #e05555; font-size: 0.85rem; margin-bottom: 1rem;"></p>
 
-        <p
-          style="
-            font-family: var(--font-body);
-            color: var(--grey-text);
-            font-size: 0.85rem;
-            margin-top: 1.5rem;
-            text-align: center;
-          "
-        >
-          New here?
-          <a href="signup.html" style="color: var(--accent)"
-            >Create a profile</a
-          >
-        </p>
+        <button id="login-btn" class="btn-strava signup-btn">Log In</button>
       </div>
+
+      <p style="font-family: var(--font-body); color: var(--grey-text); font-size: 0.85rem; margin-top: 1.25rem; text-align: center;">
+        Not a member yet?
+        <a href="signup.html" style="color: var(--accent);">Sign up here</a>
+      </p>
     </main>
 
     <footer class="footer">
@@ -93,5 +61,6 @@
     </footer>
 
     <script src="login.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>

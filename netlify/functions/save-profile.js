@@ -3,7 +3,7 @@ exports.handler = async function (event) {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
-  const { athlete_id, name, homepark, bike, trail } = JSON.parse(event.body);
+  const { athlete_id, name, homepark, bike, trail, email } = JSON.parse(event.body);
 
   const url = `${process.env.SUPABASE_URL}/rest/v1/profiles`;
 
@@ -15,7 +15,7 @@ exports.handler = async function (event) {
       "Content-Type": "application/json",
       Prefer: "resolution=merge-duplicates",
     },
-    body: JSON.stringify({ athlete_id, name, homepark, bike, trail }),
+    body: JSON.stringify({ athlete_id, name, homepark, bike, trail, email }),
   });
 
   if (!response.ok) {
