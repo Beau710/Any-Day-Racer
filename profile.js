@@ -20,7 +20,7 @@ async function init() {
     localStorage.setItem("adr_profile", JSON.stringify(profile));
     localStorage.removeItem("adr_temp_profile");
 
-    await fetch("/.netlify/functions/save-profile", {
+    const saveRes = await fetch("/.netlify/functions/save-profile", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -35,6 +35,10 @@ async function init() {
         strava_token_expires_at: profile.expires_at,
       }),
     });
+    if (!saveRes.ok) {
+      const err = await saveRes.text();
+      console.error("save-profile failed:", saveRes.status, err);
+    }
   }
 
   const profile = JSON.parse(localStorage.getItem("adr_profile"));
