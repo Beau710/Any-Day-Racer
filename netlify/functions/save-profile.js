@@ -37,9 +37,11 @@ exports.handler = async function (event) {
   });
 
   if (!response.ok) {
+    const detail = await response.text();
+    console.log("Supabase save-profile error:", detail);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Failed to save profile" }),
+      body: JSON.stringify({ error: "Failed to save profile", detail }),
     };
   }
 
