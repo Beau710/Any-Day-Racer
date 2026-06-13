@@ -30,6 +30,9 @@ async function init() {
         bike: profile.bike,
         trail: profile.trail,
         email: profile.email,
+        strava_access_token: profile.access_token,
+        strava_refresh_token: profile.refresh_token,
+        strava_token_expires_at: profile.expires_at,
       }),
     });
   }

@@ -31,8 +31,11 @@ document.getElementById("login-btn").addEventListener("click", async function ()
     return;
   }
 
+  // Store profile with Strava tokens so effort syncing works immediately
   const profile = data.profile;
   profile.access_token = data.access_token;
+  profile.refresh_token = data.refresh_token;
+  profile.expires_at = data.expires_at;
   localStorage.setItem("adr_profile", JSON.stringify(profile));
 
   window.location.href = "profile.html";

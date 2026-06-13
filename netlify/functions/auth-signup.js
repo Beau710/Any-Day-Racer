@@ -24,9 +24,15 @@ exports.handler = async function (event) {
   const data = await response.json();
 
   if (!response.ok) {
+    // User already registered — treat as success so Strava OAuth can still run
+    // and update their linked Strava account
+    const msg = (data.msg || data.message || "").toLowerCase();
+    if (msg.includes("already registered") || msg.includes("already exists")) {
+      return { statusCode: 200, body: JSON.stringify({ success: true }) };
+    }
     return {
       statusCode: 400,
-      body: JSON.stringify({ error: data.msg || "Signup failed" }),
+      body: JSON.stringify({ error: data.msg || data.message || "Signup failed" }),
     };
   }
 
