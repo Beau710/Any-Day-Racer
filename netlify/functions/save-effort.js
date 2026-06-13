@@ -1,4 +1,6 @@
 exports.handler = async function (event) {
+  console.log("save-effort invoked");
+  try {
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
@@ -192,4 +194,11 @@ exports.handler = async function (event) {
     statusCode: 200,
     body: JSON.stringify({ success: true, saved: true, ...(newTokens && { new_tokens: newTokens }) }),
   };
+  } catch (e) {
+    console.log("save-effort unhandled error:", e.message, e.stack);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: "Unexpected error", detail: e.message }),
+    };
+  }
 };
