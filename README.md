@@ -36,15 +36,14 @@ https://timely-shortbread-58de89.netlify.app
 - `profile.css` — profile page specific styles
 - `signup.css` — signup and login page styles
 - `index.js` — homepage scripts (countdown timer)
-- `leaderboard.js` — fetches segment efforts from Strava, saves to Supabase, builds leaderboard
+- `leaderboard.js` — triggers a server-side effort sync, builds leaderboard from Supabase
 - `profile.js` — loads profile from localStorage, saves to Supabase on signup
 - `signup.js` — handles Strava OAuth redirect and saves temp profile
 - `login.js` — triggers Strava OAuth for returning user login
 - `main.js` — shared scripts across all pages (login/logout state, nav management)
 - `netlify/functions/strava-auth.js` — exchanges Strava auth code for access token (signup flow)
 - `netlify/functions/strava-login.js` — exchanges Strava auth code for access token (login flow)
-- `netlify/functions/segment-efforts.js` — fetches rider's segment efforts from Strava
-- `netlify/functions/save-effort.js` — saves rider's best effort to Supabase
+- `netlify/functions/save-effort.js` — verifies the rider via their Strava token, fetches their efforts from Strava server-side, and saves their best time to Supabase (only if faster than their existing entry — times are never accepted from the browser)
 - `netlify/functions/get-leaderboard.js` — fetches leaderboard data from Supabase
 - `netlify/functions/save-profile.js` — saves rider profile to Supabase on signup
 - `netlify/functions/get-profile.js` — fetches rider profile from Supabase by athlete_id on login
@@ -60,6 +59,17 @@ https://timely-shortbread-58de89.netlify.app
 - `elapsed_time` — time in seconds
 - `start_date` — date of the effort
 - RLS enabled with public read and insert policies
+- One row per rider per segment, enforced by a unique constraint — create with:
+```sql
+-- one-time cleanup of any historical duplicates, keeping the fastest time
+DELETE FROM leaderboard a USING leaderboard b
+WHERE a.athlete_id = b.athlete_id AND a.segment_id = b.segment_id
+  AND (b.elapsed_time < a.elapsed_time
+       OR (b.elapsed_time = a.elapsed_time AND b.ctid < a.ctid));
+
+ALTER TABLE leaderboard
+  ADD CONSTRAINT leaderboard_athlete_segment_unique UNIQUE (athlete_id, segment_id);
+```
 
 ### profiles
 

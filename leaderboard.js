@@ -4,27 +4,12 @@ const accessToken = profile ? profile.access_token : null;
 async function saveEfforts() {
   if (!accessToken) return;
 
-  const response = await fetch(
-    `/.netlify/functions/segment-efforts?access_token=${accessToken}`,
-  );
-  const efforts = await response.json();
-
-  if (!efforts || efforts.length === 0) return;
-
-  const bestEffort = efforts.reduce(function (best, current) {
-    return current.elapsed_time < best.elapsed_time ? current : best;
-  });
-
+  // The server fetches and verifies efforts from Strava itself —
+  // no times are sent from the browser
   await fetch("/.netlify/functions/save-effort", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      athlete_id: profile.athlete_id,
-      athlete_name: profile.name,
-      segment_id: 3818489,
-      elapsed_time: bestEffort.elapsed_time,
-      start_date: bestEffort.start_date,
-    }),
+    body: JSON.stringify({ access_token: accessToken }),
   });
 }
 
@@ -52,21 +37,25 @@ async function loadLeaderboard() {
     if (rank === 2) rankClass = "silver";
     if (rank === 3) rankClass = "bronze";
 
-    const row = `
-      <tr>
-        <td class="${rankClass}">${rank}</td>
-        <td class="${rankClass}">${entry.athlete_name}</td>
-        <td class="${rankClass}">${time}</td>
-      </tr>
-    `;
-    tbody.innerHTML += row;
+    const row = document.createElement("tr");
+    [rank, entry.athlete_name, time].forEach(function (value) {
+      const cell = document.createElement("td");
+      if (rankClass) cell.className = rankClass;
+      cell.textContent = value;
+      row.appendChild(cell);
+    });
+    tbody.appendChild(row);
   });
 }
 
 async function init() {
   loadLeaderboard();
 
-  await saveEfforts();
+  try {
+    await saveEfforts();
+  } catch (e) {
+    console.error("Failed to sync efforts:", e);
+  }
   await loadLeaderboard();
 }
 

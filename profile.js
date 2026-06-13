@@ -39,6 +39,18 @@ async function init() {
     return;
   }
 
+  // Sync this rider's latest efforts in the background so their
+  // leaderboard time updates even if they never open the leaderboard page
+  if (profile.access_token) {
+    fetch("/.netlify/functions/save-effort", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ access_token: profile.access_token }),
+    }).catch(function (e) {
+      console.error("Failed to sync efforts:", e);
+    });
+  }
+
   document.getElementById("profile-name").textContent = profile.name;
   document.getElementById("detail-homepark").textContent = profile.homepark;
   document.getElementById("detail-bike").textContent = profile.bike;
