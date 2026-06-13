@@ -41,6 +41,8 @@
       async function handleLogin() {
         const params = new URLSearchParams(window.location.search);
         const accessToken = params.get("access_token");
+        const refreshToken = params.get("refresh_token");
+        const expiresAt = params.get("expires_at");
         const athleteId = params.get("athlete_id");
 
         if (!accessToken || !athleteId) {
@@ -73,6 +75,8 @@
 
         const profile = await response.json();
         profile.access_token = accessToken;
+        profile.refresh_token = refreshToken;
+        profile.expires_at = expiresAt;
         profile.athlete_id = athleteId;
         localStorage.setItem("adr_profile", JSON.stringify(profile));
 

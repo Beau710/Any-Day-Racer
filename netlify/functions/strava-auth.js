@@ -31,7 +31,7 @@ exports.handler = async function (event) {
   return {
     statusCode: 302,
     headers: {
-      Location: `https://timely-shortbread-58de89.netlify.app/profile.html?access_token=${data.access_token}&athlete_id=${data.athlete.id}`,
+      Location: `https://timely-shortbread-58de89.netlify.app/profile.html?access_token=${data.access_token}&refresh_token=${data.refresh_token}&expires_at=${data.expires_at}&athlete_id=${data.athlete.id}`,
     },
     body: "",
   };

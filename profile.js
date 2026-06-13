@@ -13,6 +13,8 @@ async function init() {
       trail: tempProfile.trail,
       email: tempProfile.email,
       access_token: accessToken,
+      refresh_token: params.get("refresh_token"),
+      expires_at: params.get("expires_at"),
       athlete_id: athleteId,
     };
     localStorage.setItem("adr_profile", JSON.stringify(profile));
@@ -45,7 +47,18 @@ async function init() {
     fetch("/.netlify/functions/save-effort", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ access_token: profile.access_token }),
+      body: JSON.stringify({
+        access_token: profile.access_token,
+        refresh_token: profile.refresh_token,
+        expires_at: profile.expires_at,
+      }),
+    }).then(function (res) {
+      if (!res.ok) return;
+      return res.json();
+    }).then(function (data) {
+      if (data && data.new_tokens) {
+        localStorage.setItem("adr_profile", JSON.stringify({ ...profile, ...data.new_tokens }));
+      }
     }).catch(function (e) {
       console.error("Failed to sync efforts:", e);
     });
