@@ -76,7 +76,7 @@ async function init() {
   document.getElementById("detail-bike").textContent = profile.bike;
   document.getElementById("detail-trail").textContent = profile.trail;
 
-  const initials = profile.name
+  const initials = (profile.name || "?")
     .split(" ")
     .map((w) => w[0])
     .join("")
