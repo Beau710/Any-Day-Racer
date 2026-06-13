@@ -107,9 +107,11 @@ exports.handler = async function (event) {
   });
 
   if (!effortsResponse.ok) {
+    const stravaErr = await effortsResponse.text();
+    console.log("Strava efforts error:", effortsResponse.status, stravaErr);
     return {
       statusCode: 502,
-      body: JSON.stringify({ error: "Failed to fetch efforts from Strava" }),
+      body: JSON.stringify({ error: "Failed to fetch efforts from Strava", detail: stravaErr }),
     };
   }
 
